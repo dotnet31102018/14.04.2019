@@ -50,7 +50,7 @@ namespace ConsoleApp17
 
         public override string ToString()
         {
-            return $"Country Id is {Id}, Name is {Name}, Code is {Code}, Number Of Students is {Number_Of_Students}, Number  OfVip {Number_Of_Vip}, Age Average {Age_Average}, Most Popular City {Most_Popular_City}, Oldest Vip {Oldest_Vip}, Youngest Vip {Youngest_Vip}";
+            return $"Class Id is {Id}, Name is {Name}, Code is {Code}, Number Of Students is {Number_Of_Students}, Number  OfVip {Number_Of_Vip}, Age Average {Age_Average}, Most Popular City {Most_Popular_City}, Oldest Vip {Oldest_Vip}, Youngest Vip {Youngest_Vip}";
         }
     }
 }

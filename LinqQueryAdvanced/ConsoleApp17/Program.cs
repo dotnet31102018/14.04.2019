@@ -10,16 +10,20 @@ namespace ConsoleApp17
     {
         static object GetVIPPerClass(Dictionary<ClassRoom, List<Student>> mapClassToListStudents)
         {
-
+            mapClassToListStudents.Keys.ToList().ForEach(c => c.Age_Average = mapClassToListStudents[c].Where(s => s.Vip == "yes").Count());
+            
             var result = from oneClass in mapClassToListStudents.Keys
                          select new { Class = oneClass , VIPCount =  (from oneStudent in mapClassToListStudents[oneClass]
                                                                         where oneStudent.Vip == "yes"
                                                                         select oneStudent.Id).Count()};
             return result;
+
+
         }
 
         static object GetAverageAgePerClass(Dictionary<ClassRoom, List<Student>> mapClassToListStudents)
         {
+            mapClassToListStudents.Keys.ToList().ForEach(c => c.Age_Average = (long)mapClassToListStudents[c].Select(s => s.Age).Average());
 
             var result = from oneClass in mapClassToListStudents.Keys
                          select new
@@ -33,6 +37,7 @@ namespace ConsoleApp17
 
         static object GetVIPYoungestPerClass(Dictionary<ClassRoom, List<Student>> mapClassToListStudents)
         {
+            mapClassToListStudents.Keys.ToList().ForEach(c => c.Youngest_Vip = mapClassToListStudents[c].ToList().Where(s2 => s2.Vip == "yes").Select(s3 => s3.Age).Min());
 
             var result = from oneClass in mapClassToListStudents.Keys
                          select new
@@ -47,6 +52,8 @@ namespace ConsoleApp17
 
         static object GetMostPopularCityPerClass(Dictionary<ClassRoom, List<Student>> mapClassToListStudents)
         {
+            mapClassToListStudents.Keys.ToList().ForEach(c => c.Most_Popular_City = (mapClassToListStudents[c].GroupBy(s => s.Address_City).ToList().
+                Where(g => g.Count() == mapClassToListStudents[c].GroupBy(s => s.Address_City).ToList().Select(g2 => g2.Count()).Max()).Select(g => g.Key).FirstOrDefault()));
 
             var result = from oneClass in mapClassToListStudents.Keys
                          select new

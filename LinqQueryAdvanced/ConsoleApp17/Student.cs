@@ -47,7 +47,7 @@ namespace ConsoleApp17
 
         public override string ToString()
         {
-            return $"Country Id is {Id}, Name is {Name}, Age is {Age}, Address City is {Address_City}, If Vip? {Vip}, Class Id is {Class_Id}";
+            return $"Student Id is {Id}, Name is {Name}, Age is {Age}, Address City is {Address_City}, If Vip? {Vip}, Class Id is {Class_Id}";
         }
     }
 }
